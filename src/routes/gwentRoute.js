@@ -7,12 +7,24 @@ router.get(`/gwent`, function (req, res) {
   axios.get(gwentOneUrl)
     .then((response) => {
       const cardData = response.data.response;
-      res.send(cardData);
-
-      // try to loop through the object
       const keys = Object.keys(cardData);
-      console.log(`These are the response keys: ${keys}`);
-      console.log(keys);
+      let cardNames = [];
+      let cardValues = [];
+
+      // get the keys from the response object
+      // keys.forEach((key, index) => {
+        // console.log(cardData[key].name);
+        // cardNames.push(cardData[key].name);
+      // });
+
+      // get the values from the response object
+      Object.values(cardData)
+        .forEach(
+          val => cardValues.push(val)
+        );
+
+
+      res.send(cardValues);
     })
     .catch((err) => {
       console.log(err);
