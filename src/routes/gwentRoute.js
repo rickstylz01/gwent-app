@@ -6,9 +6,13 @@ const gwentOneUrl = 'https://api.gwent.one/?key=data&version=10.10.1'
 router.get(`/gwent`, function (req, res) {
   axios.get(gwentOneUrl)
     .then((response) => {
-      const cardData = response.data.response["0"];
+      const cardData = response.data.response;
       res.send(cardData);
-      // console.log(cardsArray[0][1]);
+
+      // try to loop through the object
+      const keys = Object.keys(cardData);
+      console.log(`These are the response keys: ${keys}`);
+      console.log(keys);
     })
     .catch((err) => {
       console.log(err);
