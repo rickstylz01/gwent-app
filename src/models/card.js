@@ -5,25 +5,50 @@ const cardSchema = new Schema({
   art: {
     id: Number,
     artist: String,
+    required: true
   },
   ability: {
-    id: Number,
-    name: String,
-    description: String
+    id: { type: Number },
+    name: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
+    required: true
   },
   armor: Number,
   categories: [{
     id: Number,
-    name: String
+    name: String,
+    required: true
   }],
-  color: String,
-  faction: String,
+  color: {
+    type: String,
+    required: true
+  },
+  faction: {
+    type: String,
+    required: true
+  },
   keywords: [String],
-  name: String,
-  power: Number,
-  provision: Number,
+  name: {
+    type: String,
+    required: true
+  },
+  power: {
+    type: Number,
+    required: true
+  },
+  provision: {
+    type: Number,
+    required: true
+  },
   rarity: String,
-  type: String
+  type: {
+    type: String,
+    required: true
+  }
 });
 
 const Card = mongoose.model('Card', cardSchema);
